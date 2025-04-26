@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilim - EDİTS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Pewasftbl</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="videolar.html">Videolar</a></li>
+            <li><a href="abonelik.html">Abonelik</a></li>
+            <li><a href="profilim.html" class="active">Profilim</a></li>
+        </ul>
+    </nav>
+
+    <section class="profile-section">
+        <div class="profile-container single-profile-box">
+            <h1><i class="fas fa-user-circle"></i> Profilim</h1>
+            <div class="profile-info">
+                <p><strong>Kullanıcı Adı:</strong> <span id="username">ornek_kullanici</span></p>
+                <p><strong>Aktif Abonelik:</strong> <span id="subscriptionType">Standart</span></p>
+                <p><strong>Abonelik Bitiş Tarihi:</strong> <span id="subscriptionEnd">31.12.2024</span></p>
+            </div>
+            <div class="subscription-benefits">
+                <h2>Abonelik Ayrıcalıklarınız</h2>
+                <ul id="benefitsList">
+                    <li>✓ Orta kalitede editler</li>
+                    <li>✓ Orta düzey içerikler</li>
+                    <li>✓ Özel içeriklere erişim</li>
+                </ul>
+            </div>
+            <div class="subscription-actions">
+                <button class="renew-btn">Aboneliği Yenile</button>
+                <button class="cancel-btn">Aboneliği İptal Et</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Pewasftbl</h3>
+                <p>KALİTELİ EDITLER.</p>
+            </div>
+            <div class="footer-section">
+                <h3>SAYFALARIMIZ</h3>
+                <ul>
+                    <li><a href="https://www.tiktok.com/@pewas.ftbl?_t=ZS-8vozCje6Kpu&_r=1">TİKTOK</a></li>
+                    <li><a href="https://www.instagram.com/pewasftbl/profilecard/?igsh=MWlkeWJjdWJ6cG5ubw==">İNSTAGRAM</a></li>
+                    <li><a href="https://www.youtube.com/@pewasftbl">YOUTUBE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3></h3>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pewasftbl. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Abonelik başlangıç tarihi (örnek: bugün)
+      const startDate = new Date();
+      // 1 ay ekle
+      const endDate = new Date(startDate);
+      endDate.setMonth(endDate.getMonth() + 1);
+
+      // Tarihi gg.aa.yyyy formatına çevir
+      function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`;
+      }
+
+      document.getElementById('subscriptionEnd').textContent = formatDate(endDate);
+
+      // Aboneliği Yenile butonu
+      document.querySelector('.renew-btn').addEventListener('click', function() {
+        window.location.href = 'abonelik.html';
+      });
+
+      // Aboneliği İptal Et butonu
+      document.querySelector('.cancel-btn').addEventListener('click', function() {
+        document.getElementById('subscriptionType').textContent = 'Yok';
+        document.getElementById('subscriptionEnd').textContent = 'Yok';
+        document.getElementById('benefitsList').innerHTML = '<li>Abonelik ayrıcalığınız bulunmamaktadır.</li>';
+      });
+
+      window.addEventListener('DOMContentLoaded', function() {
+        const username = localStorage.getItem('username');
+        if (!username) {
+            // Giriş yapılmamışsa login sayfasına yönlendir
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Kullanıcı bilgilerini backend'den çek
+        fetch(`http://localhost:3001/api/kullanici/${username}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Kullanıcı bulunamadı!');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                document.getElementById('username').textContent = data.username;
+                document.getElementById('subscriptionType').textContent = data.abonelik_durumu === 'onaylı' ? 'Standart' : (data.abonelik_durumu || 'Yok');
+                document.getElementById('subscriptionEnd').textContent = data.abonelik_bitis ? new Date(data.abonelik_bitis).toLocaleDateString('tr-TR') : 'Yok';
+
+                // Ayrıcalıklar sadece onaylı abonelikte gösterilsin
+                const benefitsList = document.getElementById('benefitsList');
+                if (data.abonelik_durumu === 'onaylı') {
+                    benefitsList.innerHTML = `
+                        <li>✓ Orta kalitede editler</li>
+                        <li>✓ Orta düzey içerikler</li>
+                        <li>✓ Özel içeriklere erişim</li>
+                    `;
+                } else {
+                    benefitsList.innerHTML = '<li>Abonelik ayrıcalığınız bulunmamaktadır.</li>';
+                }
+            })
+            .catch(() => {
+                alert('Sunucuya ulaşılamıyor!');
+                window.location.href = 'login.html';
+            });
+      });
+    </script>
+</body>
+</html> 

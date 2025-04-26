@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonelik - EDİTS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Pewasftbl</h1>
+        </div>
+        <ul class="nav-links nav-left">
+            <li><a href="login.html" class="login-btn">Giriş Yap</a></li>
+            <li><a href="register.html" class="register-btn">Kayıt Ol</a></li>
+        </ul>
+        <ul class="nav-links nav-right">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="videolar.html">Videolar</a></li>
+            <li><a href="abonelik.html" class="active">Abonelik</a></li>
+            <li><a href="profilim.html" id="profileLink">Profilim</a></li>
+        </ul>
+    </nav>
+
+    <section class="subscription-section">
+        <h2>Abonelik Planları</h2>
+        <p class="section-description">Size en uygun planı seçin</p>
+        
+        <div class="plans-container">
+            <!-- Temel Plan -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2>Temel</h2>
+                    <div class="price">
+                        <span class="amount">₺29.99</span>
+                        <span class="period">/ay</span>
+                    </div>
+                </div>
+                <ul class="features">
+                    <li>✓ Düşük kalitede editler</li>
+                    <li>✓ Daha az içerik</li>
+                    <li>✓ Özel içeriklere erişim yok</li>
+                </ul>
+                <button class="subscribe-button" data-plan="basic">Abone Ol</button>
+            </div>
+
+            <!-- Standart Plan -->
+            <div class="plan-card popular">
+                <div class="popular-badge">En Popüler</div>
+                <div class="plan-header">
+                    <h2>Standart</h2>
+                    <div class="price">
+                        <span class="amount">₺79.99</span>
+                        <span class="period">/ay</span>
+                    </div>
+                </div>
+                <ul class="features">
+                    <li>✓ Orta kalitede editler</li>
+                    <li>✓ Orta düzey içerikler</li>
+                    <li>✓ Özel içeriklere erişim var</li>
+                </ul>
+                <button class="subscribe-button" data-plan="standard">Abone Ol</button>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2>Premium</h2>
+                    <div class="price">
+                        <span class="amount">₺149.99</span>
+                        <span class="period">/ay</span>
+                    </div>
+                </div>
+                <ul class="features">
+                    <li>✓ Yüksek kalitede editler</li>
+                    <li>✓ Yüksek düzey içerikler</li>
+                    <li>✓ Özel içeriklere erişim var</li>
+                    <li>✓ Öncelikli destek</li>
+                    <li>✓ Özel içerikler</li>
+                </ul>
+                <button class="subscribe-button" data-plan="premium">Abone Ol</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ödeme Formu -->
+    <div id="payment-form" class="payment-form" style="display: none;">
+        <h2>Ödeme Bilgileri</h2>
+        <form id="subscription-form">
+            <div class="plan-info"></div>
+            
+            <div class="payment-methods">
+                <label>
+                    <input type="radio" name="payment-method" value="credit-card" checked>
+                    Kredi Kartı
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="bank-transfer">
+                    Havale/EFT
+                </label>
+            </div>
+
+            <div id="credit-card-form">
+                <div class="form-group">
+                    <label for="card-name">Kart Üzerindeki İsim</label>
+                    <input type="text" id="card-name" maxlength="19" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Kart Numarası</label>
+                    <input type="text" id="card-number" maxlength="19" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiry">Son Kullanma Tarihi</label>
+                        <input type="text" id="expiry" maxlength="5" placeholder="AA/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" maxlength="3" required>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bank-transfer-form" style="display: none;">
+                <div class="form-group">
+                    <label for="sender-name">Gönderen Adı</label>
+                    <input type="text" id="sender-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="sender-iban">Gönderen IBAN</label>
+                    <input type="text" id="sender-iban" required>
+                </div>
+                <div class="bank-info">
+                    <p>Banka Bilgileri:</p>
+                    <p>Hesap Sahibi: <span id="account-owner"></span></p>
+                    <p>IBAN: <span id="iban"></span></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-posta</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <button type="button" id="payment-button" class="payment-button">Ödemeyi Tamamla</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Pewasftbl</h3>
+                <p>KALİTELİ EDITLER.</p>
+            </div>
+            <div class="footer-section">
+                <h3>SAYFALARIMIZ</h3>
+                <ul>
+                    <li><a href="https://www.tiktok.com/@pewas.ftbl?_t=ZS-8vozCje6Kpu&_r=1">TİKTOK</a></li>
+                    <li><a href="https://www.instagram.com/pewasftbl/profilecard/?igsh=MWlkeWJjdWJ6cG5ubw==">İNSTAGRAM</a></li>
+                    <li><a href="https://www.youtube.com/@pewasftbl">YOUTUBE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3></h3>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pewasftbl. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

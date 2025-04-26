@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videolar - EDİTS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Pewasftbl</h1>
+        </div>
+        <ul class="nav-links nav-left">
+            <li><a href="login.html" class="login-btn">Giriş Yap</a></li>
+            <li><a href="register.html" class="register-btn">Kayıt Ol</a></li>
+        </ul>
+        <ul class="nav-links nav-right">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="videolar.html" class="active">Videolar</a></li>
+            <li><a href="abonelik.html">Abonelik</a></li>
+            <li><a href="profilim.html" id="profileLink">Profilim</a></li>
+        </ul>
+    </nav>
+
+    <section class="videos-content">
+        <div class="videos-hero">
+            <h1>EDİTLER</h1>
+            <p>En kaliteli editleri keşfedin</p>
+        </div>
+
+        <div class="videos-grid">
+            <!-- Video 1 -->
+            <div class="video-card" data-video-url="videos/video1.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail1.jpg" alt="Video 1">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 1</h3>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-card" data-video-url="videos/video2.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail2.jpg" alt="Video 2">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 2</h3>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-card" data-video-url="videos/video3.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail3.jpg" alt="Video 3">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 3</h3>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="video-card" data-video-url="videos/video4.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail4.jpg" alt="Video 4">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 4</h3>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="video-card" data-video-url="videos/video5.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail5.jpg" alt="Video 5">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 5</h3>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="video-card" data-video-url="videos/video6.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail6.jpg" alt="Video 6">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 6</h3>
+            </div>
+
+            <!-- Video 7 -->
+            <div class="video-card" data-video-url="videos/video7.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail7.jpg" alt="Video 7">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 7</h3>
+            </div>
+
+            <!-- Video 8 -->
+            <div class="video-card" data-video-url="videos/video8.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail8.jpg" alt="Video 8">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 8</h3>
+            </div>
+
+            <!-- Video 9 -->
+            <div class="video-card" data-video-url="videos/video9.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail9.jpg" alt="Video 9">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 9</h3>
+            </div>
+
+            <!-- Video 10 -->
+            <div class="video-card" data-video-url="videos/video10.mp4">
+                <div class="video-thumbnail">
+                    <img src="videos/thumbnail10.jpg" alt="Video 10">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3>Galatasaray Edit 10</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <video id="modalVideo" controls>
+                <source src="" type="video/mp4">
+                Tarayıcınız video oynatmayı desteklemiyor.
+            </video>
+            <div class="video-controls">
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" min="0" max="1" step="0.1" value="1" id="volumeControl">
+                </div>
+            </div>
+            <button class="close-button" onclick="closeVideoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Pewasftbl</h3>
+                <p>KALİTELİ EDITLER.</p>
+            </div>
+            <div class="footer-section">
+                <h3>SAYFALARIMIZ</h3>
+                <ul>
+                    <li><a href="https://www.tiktok.com/@pewas.ftbl?_t=ZS-8vozCje6Kpu&_r=1">TİKTOK</a></li>
+                    <li><a href="https://www.instagram.com/pewasftbl/profilecard/?igsh=MWlkeWJjdWJ6cG5ubw==">İNSTAGRAM</a></li>
+                    <li><a href="https://www.youtube.com/@pewasftbl">YOUTUBE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3></h3>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pewasftbl. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

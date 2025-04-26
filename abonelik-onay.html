@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonelik Onay Paneli</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #181818; color: #fff; font-family: Arial, sans-serif; }
+        .admin-panel { max-width: 700px; margin: 60px auto; background: #232323; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 24px #0008; }
+        h1 { text-align: center; margin-bottom: 2rem; }
+        .request-list { list-style: none; padding: 0; }
+        .request-item { background: #292929; border-radius: 8px; margin-bottom: 1.2rem; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+        .request-info { flex: 1; }
+        .request-actions { display: flex; gap: 1rem; }
+        .btn { padding: 0.5rem 1.2rem; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .btn-approve { background: #27ae60; color: #fff; }
+        .btn-reject { background: #c0392b; color: #fff; }
+        .admin-password { margin-bottom: 2rem; text-align: center; }
+        .admin-password input { padding: 0.5rem; border-radius: 5px; border: none; }
+        .admin-password button { margin-left: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="admin-panel">
+        <h1>Abonelik Onay Paneli</h1>
+        <div class="admin-password" id="adminPasswordBox">
+            <input type="password" id="adminPass" placeholder="Yönetici Şifresi">
+            <button onclick="checkPassword()">Giriş Yap</button>
+            <div id="passError" style="color:#e74c3c;margin-top:8px;"></div>
+        </div>
+        <ul class="request-list" id="requestList" style="display:none;"></ul>
+    </div>
+    <script>
+    // Basit şifre kontrolü (örnek: 'admin123')
+    const ADMIN_PASSWORD = 'admin123';
+    function checkPassword() {
+        const pass = document.getElementById('adminPass').value;
+        if(pass === ADMIN_PASSWORD) {
+            document.getElementById('adminPasswordBox').style.display = 'none';
+            document.getElementById('requestList').style.display = 'block';
+            loadRequests();
+        } else {
+            document.getElementById('passError').textContent = 'Hatalı şifre!';
+        }
+    }
+
+    // Bekleyen başvuruları yükle
+    function loadRequests() {
+        fetch('http://localhost:3001/api/bekleyen-basvurular')
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById('requestList');
+                list.innerHTML = '';
+                if(data.length === 0) {
+                    list.innerHTML = '<li style="text-align:center;">Bekleyen başvuru yok.</li>';
+                    return;
+                }
+                data.forEach(req => {
+                    const li = document.createElement('li');
+                    li.className = 'request-item';
+                    li.innerHTML = `
+                        <div class="request-info">
+                            <b>Kullanıcı:</b> ${req.username}<br>
+                            <b>Başvuru Tarihi:</b> ${new Date(req.basvuru_tarihi).toLocaleString('tr-TR')}
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-approve" onclick="approveRequest(${req.id})">Onayla</button>
+                            <button class="btn btn-reject" onclick="rejectRequest(${req.id})">Reddet</button>
+                        </div>
+                    `;
+                    list.appendChild(li);
+                });
+            });
+    }
+
+    function approveRequest(id) {
+        fetch('http://localhost:3001/api/basvuru-onayla', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id })
+        }).then(() => loadRequests());
+    }
+    function rejectRequest(id) {
+        fetch('http://localhost:3001/api/basvuru-reddet', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id })
+        }).then(() => loadRequests());
+    }
+    </script>
+</body>
+</html> 

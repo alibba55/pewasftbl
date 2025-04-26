@@ -1,0 +1,1158 @@
+/* Genel Stiller */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Dark Theme */
+.dark-theme {
+    background-color: #1a1a1a;
+    color: #fff;
+    background-image: url('https://tmssl.akamaized.net/images/foto/galerie/mauro-icardi-galatasaray-2023-1673262645-99756.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.dark-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.dark-theme .navbar {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dark-theme .logo h1 {
+    color: #fff;
+}
+
+.dark-theme .nav-links a {
+    color: #fff;
+}
+
+.dark-theme .nav-links a:hover, .dark-theme .nav-links a.active {
+    color: #3498db;
+}
+
+.dark-theme .feature-card {
+    background-color: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .feature-card p {
+    color: #ccc;
+}
+
+.dark-theme .about-section {
+    background-color: transparent;
+}
+
+.dark-theme .about-content h2 {
+    color: #fff;
+}
+
+.dark-theme .about-content p {
+    color: #ccc;
+}
+
+.dark-theme .stat-item {
+    background-color: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .stat-item h3 {
+    color: #fff;
+}
+
+.dark-theme .stat-item p {
+    color: #ccc;
+}
+
+.dark-theme footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .videos-hero {
+    background: none;
+}
+
+.dark-theme .videos-hero h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .videos-hero p {
+    color: #ccc;
+}
+
+.dark-theme .video-card {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .video-card h3 {
+    color: #fff;
+}
+
+.dark-theme .video-card p {
+    color: #ccc;
+}
+
+.dark-theme .subscription-section {
+    background-color: transparent;
+}
+
+.dark-theme .subscription-section h2 {
+    color: #fff;
+}
+
+.dark-theme .section-description {
+    color: #ccc;
+}
+
+.dark-theme .subscription-card {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .card-header h3 {
+    color: #fff;
+}
+
+.dark-theme .price {
+    color: #fff;
+}
+
+.dark-theme .price .amount {
+    color: #3498db;
+}
+
+.dark-theme .price .period {
+    color: #ccc;
+}
+
+.dark-theme .features-list li {
+    color: #ccc;
+}
+
+.dark-theme .payment-section {
+    background-color: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .payment-methods h3 {
+    color: #fff;
+}
+
+.dark-theme .option-label {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.dark-theme .payment-option input[type="radio"]:checked + .option-label {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.dark-theme .form-group label {
+    color: #fff;
+}
+
+.dark-theme .form-group input {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.dark-theme .form-group input:focus {
+    border-color: #3498db;
+}
+
+.dark-theme .bank-info {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .bank-info h3 {
+    color: #fff;
+}
+
+.dark-theme .bank-details {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .bank-details p {
+    color: #fff;
+}
+
+.dark-theme .bank-details strong {
+    color: #fff;
+}
+
+.dark-theme .payment-button {
+    background: #3498db;
+    color: #fff;
+}
+
+.dark-theme .payment-button:hover {
+    background: #2980b9;
+}
+
+.dark-theme .payment-button:disabled {
+    background: #666;
+}
+
+/* Navbar iki grup hizalama */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .logo {
+    flex: 0 0 auto;
+    margin-right: 1.5rem;
+}
+
+.nav-links.nav-left {
+    flex: 0 0 auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links.nav-right {
+    flex: 0 0 auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 0 0.2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #3498db;
+}
+
+/* Menüde Giriş Yap ve Kayıt Ol butonları için özel stil */
+.nav-links .login-btn {
+    background: #27ae60;
+    color: #fff !important;
+    border-radius: 8px;
+    padding: 4px 14px !important;
+    margin-right: 8px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.nav-links .login-btn:hover {
+    background: #219150;
+}
+
+.nav-links .register-btn {
+    background: #fff;
+    color: #232323 !important;
+    border-radius: 8px;
+    padding: 4px 14px !important;
+    margin-right: 16px;
+    font-weight: bold;
+    border: 1px solid #eee;
+    transition: background 0.2s, color 0.2s;
+}
+.nav-links .register-btn:hover {
+    background: #f2f2f2;
+    color: #111 !important;
+}
+
+/* Hero Section */
+.hero {
+    background: none;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 1rem;
+    margin-top: 60px;
+}
+
+.hero-content {
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #2980b9;
+}
+
+/* Features Section */
+.features {
+    padding: 5rem 5%;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+/* Pricing Section */
+.pricing {
+    padding: 5rem 5%;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.pricing h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.pricing-card.featured {
+    transform: scale(1.05);
+    border: 2px solid #3498db;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.price {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1.5rem;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #666;
+}
+
+.pricing-card ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.pricing-card ul li {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.pricing-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pricing-button:hover {
+    background-color: #2980b9;
+}
+
+/* Videos Page Styles */
+.videos-content {
+    padding-top: 80px;
+    text-align: center;
+}
+
+.videos-hero {
+    background: none;
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+}
+
+.videos-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.videos-hero p {
+    font-size: 1.3rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.video-filters {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.filter-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.filter-options select {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-options select:hover {
+    border-color: #3498db;
+}
+
+.filter-options select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    padding: 0 5%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.video-card {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(52, 152, 219, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.video-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+    aspect-ratio: 16/9;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(52, 152, 219, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.video-card:hover .play-button {
+    opacity: 1;
+}
+
+.play-button i {
+    color: white;
+    font-size: 2rem;
+}
+
+.play-button:hover {
+    background-color: #3498db;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    margin: 0;
+    font-size: 1.4rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.video-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Dark Theme Video Styles */
+.dark-theme .videos-hero {
+    background: none;
+}
+
+.dark-theme .videos-hero h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .videos-hero p {
+    color: #ccc;
+}
+
+.dark-theme .video-card {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .video-card:hover {
+    border-color: rgba(52, 152, 219, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .video-card h3 {
+    color: #fff;
+}
+
+.dark-theme .video-card p {
+    color: #ccc;
+}
+
+.dark-theme .play-button {
+    background-color: rgba(52, 152, 219, 0.9);
+}
+
+.dark-theme .play-button:hover {
+    background-color: #3498db;
+}
+
+.dark-theme .play-button i {
+    color: white;
+}
+
+/* Subscription Section Styles */
+.subscription-section {
+    padding: 8rem 5% 5rem;
+    text-align: center;
+    background-color: transparent;
+}
+
+.subscription-section h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-description {
+    color: #ccc;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+.plans-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.plan-card {
+    background: transparent;
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(52, 152, 219, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.plan-card.popular {
+    border: 2px solid #3498db;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.plan-header {
+    margin-bottom: 2rem;
+}
+
+.plan-header h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.price {
+    color: #fff;
+}
+
+.price .amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.price .period {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.features {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.features li {
+    color: #ccc;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.subscribe-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.subscribe-button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Ödeme Formu Stilleri */
+.payment-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: transparent;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-form h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    font-size: 1rem;
+    background: transparent;
+    color: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.payment-methods label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.bank-info {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bank-info p {
+    margin: 0.5rem 0;
+    color: #ccc;
+}
+
+.payment-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.payment-button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.payment-button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 3rem 5% 1rem;
+    margin-top: 5rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #3498db;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .subscription-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-options {
+        flex-direction: column;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* About Section */
+.about-section {
+    padding: 5rem 5%;
+    text-align: center;
+    background-color: transparent;
+    position: relative;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.about-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    color: #ccc;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background: transparent;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(52, 152, 219, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-item p {
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Videolar Sayfası */
+.videos-section {
+    padding: 80px 0;
+    background: none;
+    min-height: 100vh;
+}
+
+/* Video Modal */
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    width: 70%;
+    max-width: 800px;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.volume-control input[type="range"] {
+    width: 80px;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.close-button:hover {
+    background: rgba(255, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+/* Profilim Sayfası Tek Kutu ve Ortalanmış */
+.single-profile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 120px auto 0 auto;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+}
+
+.single-profile-box h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.single-profile-box .profile-info p {
+    text-align: center;
+    margin-bottom: 0.7rem;
+}
+
+.single-profile-box .subscription-benefits {
+    margin: 2rem 0 1.5rem 0;
+}
+
+.single-profile-box .subscription-benefits h2 {
+    margin-bottom: 1rem;
+}
+
+.single-profile-box .subscription-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.single-profile-box .subscription-benefits li {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.single-profile-box .subscription-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Eski iki sütun düzenini etkisiz bırak */
+.two-column-profile, .profile-user-info, .profile-subscription-info {
+    all: unset;
+}
+
+.nav-links.nav-right li {
+    margin: 0 1.2rem;
+}
