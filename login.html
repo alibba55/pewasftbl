@@ -40,7 +40,7 @@
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        fetch('http://localhost:3001/api/login', {
+        fetch('https://pewasftbl.onrender.com/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
