@@ -327,3 +327,10 @@ window.addEventListener('DOMContentLoaded', function() {
     if (loginBtn) loginBtn.style.display = isLoggedIn ? 'none' : '';
     if (registerBtn) registerBtn.style.display = isLoggedIn ? 'none' : '';
 });
+
+// Kayıt olma örneği (varsa):
+// fetch('https://pewasftbl.onrender.com/api/register', {...})
+// Giriş yapma örneği (varsa):
+// fetch('https://pewasftbl.onrender.com/api/login', {...})
+// Profil çekme örneği (varsa):
+// fetch(`https://pewasftbl.onrender.com/api/kullanici/${username}`)
