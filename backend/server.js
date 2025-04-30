@@ -5,7 +5,13 @@ const cors = require('cors');
 const app = express();
 const PORT = 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://pewasftbl.online',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000'
+  ]
+}));
 app.use(bodyParser.json());
 
 // Veritabanı bağlantısı
