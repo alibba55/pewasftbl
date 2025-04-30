@@ -6,6 +6,101 @@
     <title>Profilim - EDİTS</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .profile-main {
+            max-width: 600px;
+            margin: 120px auto 40px auto;
+            background: rgba(30,32,36,0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 2.5rem 2rem;
+            color: #fff;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #23272a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #aaa;
+            overflow: hidden;
+        }
+        .profile-header-info {
+            flex: 1;
+        }
+        .profile-header-info h2 {
+            margin: 0 0 0.3rem 0;
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+        .profile-header-info .email {
+            color: #b9bbbe;
+            font-size: 1rem;
+        }
+        .profile-section-title {
+            font-size: 1.2rem;
+            color: #b9bbbe;
+            margin-bottom: 0.7rem;
+            margin-top: 1.5rem;
+        }
+        .profile-info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+        .profile-info-list li {
+            margin-bottom: 0.6rem;
+            font-size: 1.08rem;
+        }
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .profile-actions button {
+            flex: 1;
+            padding: 0.7rem 0;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .change-pass-btn { background: #5865f2; color: #fff; }
+        .change-pass-btn:hover { background: #4752c4; }
+        .logout-btn { background: #23272a; color: #fff; border: 1px solid #444; }
+        .logout-btn:hover { background: #36393f; }
+        .delete-btn { background: #ed4245; color: #fff; }
+        .delete-btn:hover { background: #a3161b; }
+        .abonelik-badge {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .abonelik-onayli { background: #43b581; color: #fff; }
+        .abonelik-beklemede { background: #faa61a; color: #23272a; }
+        .abonelik-reddedildi { background: #ed4245; color: #fff; }
+        @media (max-width: 700px) {
+            .profile-main { padding: 1.2rem 0.5rem; }
+            .profile-header { flex-direction: column; gap: 0.7rem; align-items: flex-start; }
+            .profile-avatar { width: 60px; height: 60px; font-size: 2rem; }
+        }
+    </style>
 </head>
 <body class="dark-theme">
     <nav class="navbar">
@@ -20,28 +115,36 @@
         </ul>
     </nav>
 
-    <section class="profile-section">
-        <div class="profile-container single-profile-box">
-            <h1><i class="fas fa-user-circle"></i> Profilim</h1>
-            <div class="profile-info">
-                <p><strong>Kullanıcı Adı:</strong> <span id="username">ornek_kullanici</span></p>
-                <p><strong>Aktif Abonelik:</strong> <span id="subscriptionType">Standart</span></p>
-                <p><strong>Abonelik Bitiş Tarihi:</strong> <span id="subscriptionEnd">31.12.2024</span></p>
+    <div class="profile-main">
+        <div class="profile-header">
+            <div class="profile-avatar" id="profileAvatar">
+                <i class="fas fa-user"></i>
             </div>
-            <div class="subscription-benefits">
-                <h2>Abonelik Ayrıcalıklarınız</h2>
-                <ul id="benefitsList">
-                    <li>✓ Orta kalitede editler</li>
-                    <li>✓ Orta düzey içerikler</li>
-                    <li>✓ Özel içeriklere erişim</li>
-                </ul>
-            </div>
-            <div class="subscription-actions">
-                <button class="renew-btn">Aboneliği Yenile</button>
-                <button class="cancel-btn">Aboneliği İptal Et</button>
+            <div class="profile-header-info">
+                <h2 id="username">Kullanıcı Adı</h2>
+                <div class="email" id="email">E-posta</div>
             </div>
         </div>
-    </section>
+        <div class="profile-section-title">Kişisel Bilgiler</div>
+        <ul class="profile-info-list">
+            <li><strong>Telefon:</strong> <span id="phone">-</span></li>
+        </ul>
+        <div class="profile-section-title">Abonelik Bilgileri</div>
+        <ul class="profile-info-list">
+            <li><strong>Durum:</strong> <span id="subscriptionType">Yok</span> <span id="abonelikBadge"></span></li>
+            <li><strong>Başlangıç Tarihi:</strong> <span id="subscriptionStart">-</span></li>
+            <li><strong>Bitiş Tarihi:</strong> <span id="subscriptionEnd">-</span></li>
+        </ul>
+        <div class="profile-section-title">Ayrıcalıklar</div>
+        <ul class="profile-info-list" id="benefitsList">
+            <li>Abonelik ayrıcalığınız bulunmamaktadır.</li>
+        </ul>
+        <div class="profile-actions">
+            <button class="change-pass-btn" onclick="alert('Bu özellik yakında!')">Şifre Değiştir</button>
+            <button class="logout-btn" onclick="logoutUser()">Çıkış Yap</button>
+            <button class="delete-btn" onclick="alert('Bu özellik yakında!')">Hesabı Sil</button>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -68,46 +171,19 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-      // Abonelik başlangıç tarihi (örnek: bugün)
-      const startDate = new Date();
-      // 1 ay ekle
-      const endDate = new Date(startDate);
-      endDate.setMonth(endDate.getMonth() + 1);
+    function logoutUser() {
+        localStorage.removeItem('username');
+        window.location.href = 'login.html';
+    }
 
-      // Tarihi gg.aa.yyyy formatına çevir
-      function formatDate(date) {
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = date.getFullYear();
-        return `${day}.${month}.${year}`;
-      }
-
-      document.getElementById('subscriptionEnd').textContent = formatDate(endDate);
-
-      // Aboneliği Yenile butonu
-      document.querySelector('.renew-btn').addEventListener('click', function() {
-        window.location.href = 'abonelik.html';
-      });
-
-      // Aboneliği İptal Et butonu
-      document.querySelector('.cancel-btn').addEventListener('click', function() {
-        document.getElementById('subscriptionType').textContent = 'Yok';
-        document.getElementById('subscriptionEnd').textContent = 'Yok';
-        document.getElementById('benefitsList').innerHTML = '<li>Abonelik ayrıcalığınız bulunmamaktadır.</li>';
-      });
-
-      window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function() {
         const username = localStorage.getItem('username');
         if (!username) {
-            // Giriş yapılmamışsa login sayfasına yönlendir
             window.location.href = 'login.html';
             return;
         }
-
-        // Kullanıcı bilgilerini backend'den çek
-        fetch(`http://localhost:3001/api/kullanici/${username}`)
+        fetch(`https://pewasftbl.onrender.com/api/kullanici/${username}`)
             .then(res => res.json())
             .then(data => {
                 if (data.error) {
@@ -116,10 +192,26 @@
                     return;
                 }
                 document.getElementById('username').textContent = data.username;
+                document.getElementById('email').textContent = data.email || '-';
+                document.getElementById('phone').textContent = data.phone || '-';
                 document.getElementById('subscriptionType').textContent = data.abonelik_durumu === 'onaylı' ? 'Standart' : (data.abonelik_durumu || 'Yok');
-                document.getElementById('subscriptionEnd').textContent = data.abonelik_bitis ? new Date(data.abonelik_bitis).toLocaleDateString('tr-TR') : 'Yok';
-
-                // Ayrıcalıklar sadece onaylı abonelikte gösterilsin
+                document.getElementById('subscriptionStart').textContent = data.abonelik_baslangic ? new Date(data.abonelik_baslangic).toLocaleDateString('tr-TR') : '-';
+                document.getElementById('subscriptionEnd').textContent = data.abonelik_bitis ? new Date(data.abonelik_bitis).toLocaleDateString('tr-TR') : '-';
+                // Abonelik badge
+                const badge = document.getElementById('abonelikBadge');
+                badge.textContent = '';
+                badge.className = 'abonelik-badge';
+                if (data.abonelik_durumu === 'onaylı') {
+                    badge.textContent = 'Onaylı';
+                    badge.classList.add('abonelik-onayli');
+                } else if (data.abonelik_durumu === 'beklemede') {
+                    badge.textContent = 'Beklemede';
+                    badge.classList.add('abonelik-beklemede');
+                } else if (data.abonelik_durumu === 'reddedildi') {
+                    badge.textContent = 'Reddedildi';
+                    badge.classList.add('abonelik-reddedildi');
+                }
+                // Ayrıcalıklar
                 const benefitsList = document.getElementById('benefitsList');
                 if (data.abonelik_durumu === 'onaylı') {
                     benefitsList.innerHTML = `
@@ -135,7 +227,7 @@
                 alert('Sunucuya ulaşılamıyor!');
                 window.location.href = 'login.html';
             });
-      });
+    });
     </script>
 </body>
 </html> 
