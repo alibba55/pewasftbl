@@ -50,7 +50,7 @@
         const password = document.getElementById('password').value;
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
-        fetch('http://localhost:3001/api/register', {
+        fetch('https://pewasftbl.onrender.com/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password, email, phone })
